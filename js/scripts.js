@@ -1,9 +1,16 @@
 $(document).ready(() => {
-  let value = parseFloat(getUrlParameter("valor"));
-  if (!value || isNaN(value) || value < 0) {
-    value = 0;
+  $("#value").maskMoney({
+    symbol: "R$ ",
+    thousands: ".",
+    decimal: ",",
+    symbolStay: true,
+  });
+
+  let value = getUrlParameter("valor");
+  if (!value) {
+    value = "0,00";
   }
-  $("#value").val(value);
+  $("#value").val("R$ " + value);
 
   let parcel = parseInt(getUrlParameter("parcelas"));
   if (!parcel || isNaN(parcel) || parcel < 0 || parcel > data.length + 1) {
@@ -38,21 +45,33 @@ const data = [
 ];
 
 const calcular = () => {
-  let value = parseFloat($("#value").val());
+  let value = ("" + $("#value").val())
+    .replaceAll("R$ ", "")
+    .replaceAll(".", "")
+    .replaceAll(",", ".");
+  value = parseFloat(value);
   const parcels = data[$("#parcel").val()].parcels;
   const percent = data[$("#parcel").val()].percent;
 
   if (value < 0) {
-    $("#value").val(0);
+    $("#value").val("R$ 0,00");
     value = 0;
   }
 
   let increment = (percent / 100) * value;
   let result = (value + increment) / (parcels || 1);
 
-  $("#result").html(
-    isNaN(result) ? "-" : "R$ " + result.toFixed(2).replace(".", ",")
-  );
+  if (isNaN(result)) {
+    $("#value").val("R$ 0,00");
+    $("#result").html("R$ 0,00");
+  } else {
+    list = result.toFixed(2).split(".");
+    result = list[0]
+      .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")
+      .concat(",")
+      .concat(list[1]);
+    $("#result").html("R$ " + result);
+  }
 };
 
 const getUrlParameter = (sParam) => {

@@ -12,21 +12,35 @@
       integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
       crossorigin="anonymous"
     ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"
+      integrity="sha512-Rdk63VC+1UYzGSgd3u2iadi0joUrcwX0IWp2rTh6KXFoAmgOjRS99Vynz1lJPT8dLjvo6JZOqpAHJyfCEZ5KoA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script src="js/scripts.js"></script>
     <title>Calculadora Mega Digital</title>
   </head>
   <body>
     <section>
       <header>
-        <img src="img/mega-digital.png">
-        <span>Calculadora <br/>de juros <br/>do cartão</span>
+        <img src="img/mega-digital.png" />
+        <span>Calculadora de<br />parcelamento<br />no cartão</span>
       </header>
       <article>
         <div class="form">
           <div class="form-group">
             <div class="label">Valor à vista:</div>
             <div class="field">
-              <input id="value" type="number" oninput="calcular()" min="0" />
+              <input
+                id="value"
+                type="text"
+                onchange="calcular()"
+                data-affixes-stay="true"
+                data-prefix="R$ "
+                data-thousands="."
+                data-decimal=","
+              />
             </div>
           </div>
           <div class="form-group">
