@@ -1,3 +1,26 @@
+$(document).ready(() => {
+  let value = parseFloat(getUrlParameter("valor"));
+  if (!value || isNaN(value)) {
+    value = 0;
+  }
+  $("#value").val(value);
+
+  let parcel = parseInt(getUrlParameter("parcelas"));
+  if (!parcel || isNaN(parcel)) {
+    parcel = data.length;
+  }
+  data.map((item, idx) =>
+    $("#parcel").append(
+      item.title,
+      `<option value="${item.key}"${idx + 1 === parcel ? " selected" : ""}>${
+        item.title
+      }</option>`
+    )
+  );
+
+  calcular();
+});
+
 const data = [
   { key: 0, title: "Débito", parcels: 1, percent: 2 },
   { key: 1, title: "1x", parcels: 1, percent: 4 },
@@ -49,23 +72,3 @@ const getUrlParameter = (sParam) => {
   }
   return false;
 };
-
-$(document).ready(() => {
-  const value = getUrlParameter("valor") || 0;
-  $("#value").val(value);
-
-  let parcel = parseInt(getUrlParameter("parcelas"));
-  if (!parcel || isNaN(parcel)) {
-    parcel = data.length;
-  }
-  data.map((item, idx) =>
-    $("#parcel").append(
-      item.title,
-      `<option value="${item.key}"${idx + 1 === parcel ? " selected" : ""}>${
-        item.title
-      }</option>`
-    )
-  );
-
-  calcular();
-});
