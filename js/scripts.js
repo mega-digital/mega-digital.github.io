@@ -1,18 +1,18 @@
 $(document).ready(() => {
   let value = parseFloat(getUrlParameter("valor"));
-  if (!value || isNaN(value)) {
+  if (!value || isNaN(value) || value < 0) {
     value = 0;
   }
   $("#value").val(value);
 
   let parcel = parseInt(getUrlParameter("parcelas"));
-  if (!parcel || isNaN(parcel)) {
+  if (!parcel || isNaN(parcel) || parcel < 0 || parcel > data.length + 1) {
     parcel = data.length;
   }
   data.map((item, idx) =>
     $("#parcel").append(
       item.title,
-      `<option value="${item.key}"${idx + 1 === parcel ? " selected" : ""}>${
+      `<option value="${item.key}"${idx === parcel ? " selected" : ""}>${
         item.title
       }</option>`
     )
