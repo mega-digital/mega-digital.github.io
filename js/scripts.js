@@ -51,10 +51,13 @@ const getUrlParameter = (sParam) => {
 };
 
 $(document).ready(() => {
-  const value = getUrlParameter("preco") || 0;
+  const value = getUrlParameter("valor") || 0;
   $("#value").val(value);
 
-  const parcel = getUrlParameter("vezes") || data.length;
+  let parcel = parseInt(getUrlParameter("parcelas"));
+  if (!parcel || isNaN(parcel)) {
+    parcel = data.length;
+  }
   data.map((item, idx) =>
     $("#parcel").append(
       item.title,
