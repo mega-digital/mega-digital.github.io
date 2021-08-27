@@ -7,7 +7,7 @@ $(document).ready(() => {
 
   let parcel = parseInt(getUrlParameter("parcelas"));
   if (!parcel || isNaN(parcel) || parcel < 0 || parcel > data.length + 1) {
-    parcel = data.length;
+    parcel = data.length - 1;
   }
   data.map((item, idx) =>
     $("#parcel").append(
