@@ -34,14 +34,14 @@ const data = [
   { key: 2, title: "2x", parcels: 2, percent: 4.33 },
   { key: 3, title: "3x", parcels: 3, percent: 4.77 },
   { key: 4, title: "4x", parcels: 4, percent: 5.2 },
-  { key: 5, title: "5x", parcels: 5, percent: 5.63 },
-  { key: 6, title: "6x", parcels: 6, percent: 6.06 },
-  { key: 7, title: "7x", parcels: 7, percent: 6.59 },
-  { key: 8, title: "8x", parcels: 8, percent: 7.02 },
-  { key: 9, title: "9x", parcels: 9, percent: 7.45 },
-  { key: 10, title: "10x", parcels: 10, percent: 7.88 },
-  { key: 11, title: "11x", parcels: 11, percent: 8.31 },
-  { key: 12, title: "12x", parcels: 12, percent: 8.8 },
+  { key: 5, title: "5x", parcels: 5, percent: 5.7 },
+  { key: 6, title: "6x", parcels: 6, percent: 6.5 },
+  { key: 7, title: "7x", parcels: 7, percent: 6.7 },
+  { key: 8, title: "8x", parcels: 8, percent: 7.8 },
+  { key: 9, title: "9x", parcels: 9, percent: 8.31 },
+  { key: 10, title: "10x", parcels: 10, percent: 8.8 },
+  { key: 11, title: "11x", parcels: 11, percent: 9.4 },
+  { key: 12, title: "12x", parcels: 12, percent: 10 },
 ];
 
 const calcular = () => {
